@@ -16,7 +16,7 @@
 
 <body>
     <div class="guestbookarea">
-        <h1 id="welcome">Welcome to Castor's guestbook!</h1>
+        <h1 id="welcome">Welcome to <?= $title ?>!</h1>
         <p id="madeby">Powered by <a href="https://github.com/whoisyoges/simple-guestbook" target="_blank">simple guestbook</a>.</p>
         
         <form action="message.php" method="post" enctype="multipart/form-data">
@@ -53,7 +53,7 @@
 
         <div class="outputarea">
             <div class="user">
-                <p><?= $result['name']?><span><?= $result['date']?> UTC</span></p>
+                <p><?= ($result['name'])?><span><?= $result['date']?> UTC</span></p>
             </div>
             <p><?= $result['message']?></p>
         </div>
@@ -72,7 +72,7 @@
                 }
             }
             ?>
-            
+
         </div>
     </div>
 </body>
