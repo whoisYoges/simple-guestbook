@@ -16,6 +16,7 @@
         <h3>Error</h3>
         <p>The requested page could not be found. Please try again later.</p>
         <p>If you think this is an issue, Please <a href="https://castorisdead.xyz/contact/" target="_blank">contact me</a>. </p>
+        <p><a href="/">Return Home</a></p>
     </div>
 </body>
 
