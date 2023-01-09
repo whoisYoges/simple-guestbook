@@ -18,6 +18,7 @@ Demo and preview at: <https://guestbook.yogeshlamichhane.com.np>.
 - Easy to setup and use
 - No 3rd party libs are used
 - No login required
+- simple captcha like verification process for anti-spam
 
 # Dependencies
 - php
@@ -49,7 +50,3 @@ Replace `<dbname>` with your database name and `<tablename>` with your tablename
 The table should look like following:
 
 ![database preview](/preview_database.jpg)
-
-## Todos
-
-1. add a simple captcha system or some verification system to disable spams.
