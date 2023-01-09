@@ -33,16 +33,26 @@ form {
     margin: 10px
 }
 
+#sessionmsg {
+    color: #bd2424;
+    margin: 10px
+}
+
 .inputid,
 .user {
     font-weight: bold
 }
 
-.inputfields {
+.inputfields,
+#verification {
     background-color: #25242c;
     color: #7fffd4;
     font-size: 14px;
     width: 100%
+}
+
+#verification {
+    max-width: 100px
 }
 
 .outputarea {

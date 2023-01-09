@@ -1,5 +1,7 @@
 <?php
-    include('config.php');
+session_start();
+include('config.php');
+include('variableAndFunctions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +28,20 @@
             <p class="inputid">Message:</p>
             <p><textarea name="message" rows="3" maxlength="600" class="inputfields" placeholder="Your Message"></textarea></p>
 
+            <p class="inputid">Verification</p>
+            <p>What is <?= $randNum1 ?> + <?= $randNum2 ?> equals to: <input type="text" name="verification" id="verification" maxlength="3" placeholder="Your Answer"></p>
+
             <input type="submit" value="send" title="Send your message!">
             <input type="hidden" name="action" value="sendmessage">
         </form>
+        <p id="sessionmsg">
+            <?php
+            if(isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset ($_SESSION['msg']);
+            }
+            ?>
+        </p>
         <?php
         // Get the current page number
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
