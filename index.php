@@ -19,15 +19,15 @@
         <h1 id="welcome">Welcome to <?= $title ?>!</h1>
         <p id="madeby">Powered by <a href="https://github.com/whoisyoges/simple-guestbook" target="_blank">simple guestbook</a>.</p>
         
-        <form action="message.php" method="post" enctype="multipart/form-data">
+        <form action="message.php" method="post">
             <p class="inputid">Name:</p>
             <p><input type="text" name="name" class="inputfields" maxlength="60" placeholder="Your Name"></p>
 
             <p class="inputid">Message:</p>
             <p><textarea name="message" rows="3" maxlength="600" class="inputfields" placeholder="Your Message"></textarea></p>
 
-            <input type="hidden" name="action" value="message">
             <input type="submit" value="send" title="Send your message!">
+            <input type="hidden" name="action" value="sendmessage">
         </form>
         <?php
         // Get the current page number
@@ -53,20 +53,20 @@
 
         <div class="outputarea">
             <div class="user">
-                <p><?= ($result['name'])?><span><?= $result['date']?> UTC</span></p>
+                <p><?= ($result['name']) ?><span><?= ($result['date']) ?> UTC</span></p>
             </div>
-            <p><?= $result['message']?></p>
+            <p><?= ($result['message']) ?></p>
         </div>
         <?php
             endwhile;                
         ?>
 
-        <!-- Generate the pagination links -->
         <div class="pagination">
             <?php
+            // Generate pagination link
             for ($i = 1; $i <= $num_pages; $i++) {
                 if ($i == $page) {
-                    echo '<span class="current">' . $i . '</span>';
+                    echo '<a id="currentpage" href="?page=' . $i . '">' . $i . '</a>';
                 } else {
                     echo '<a href="?page=' . $i . '">' . $i . '</a>';
                 }
@@ -80,5 +80,5 @@
 </html>
 <?php
 // Close the connection
-mysqli_close($conn);
+mysqli_close($dbconnect); 
 ?>

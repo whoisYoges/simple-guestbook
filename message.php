@@ -1,18 +1,26 @@
 <?php
-    include('config.php');
-    if (isset($_POST['action']) && $_POST['action'] == 'message') {
-        $name = htmlspecialchars($_POST['name']);
-        $message = htmlspecialchars($_POST['message']);
-        $timedate = gmdate("Y-m-d H:i:s");
+include('config.php');
 
-        $sendMessage = "INSERT INTO `$dbname`.`$tablename` (`id`, `name`, `message`, `date`) VALUES (NULL, '$name', '$message.', current_timestamp());";
-        
-        if(mysqli_query($dbconnect,$sendMessage)){
-            echo "Message added.";
-        }
-        else {
-            echo "Couldn't add your message.";
-        }
-    }
-    header('Location: index.php');
-    exit;
+function escape ($field){
+    global $dbconnect;
+    return mysqli_escape_string($dbconnect,$field);
+}
+function redirect($url){
+    header('location:'.$url);
+}
+
+if (isset($_POST['action']) and $_POST['action'] == 'sendmessage') {
+    $name = htmlspecialchars(escape($_POST['name']));
+    $message = htmlspecialchars(escape($_POST['message']));
+    $timedate = escape(date("Y-m-d H:i:s"));
+
+    $messageQuery = "INSERT INTO `$dbname`.`$tablename` (`id`, `name`, `message`, `date`) VALUES (NULL, '$name', '$message', '$timedate');";
+
+    $sendMessage = mysqli_query($dbconnect, $messageQuery);
+    if ($sendMessage) {
+        redirect('index.php');
+    }  
+}
+else {
+    redirect('index.php');
+}
