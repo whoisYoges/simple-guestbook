@@ -2,8 +2,7 @@
 [What is simple-guestbook?](#simple-guestbook)  
 [Features](#features)  
 [Dependencies](#dependencies)  
-[Configuration](#configuration)  
-[Todos](#todos)
+[Configuration](#configuration)
 
 # simple-guestbook
 
@@ -50,3 +49,8 @@ Replace `<dbname>` with your database name and `<tablename>` with your tablename
 The table should look like following:
 
 ![database preview](/preview_database.jpg)
+
+**This repository is available in following platforms:**
+<https://git.sr.ht/~whoisyoges/simple-guestbook>  
+<https://codeberg.org/whoisyoges/simple-guestbook>  
+<https://github.com/whoisyoges/simple-guestbook>
