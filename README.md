@@ -50,7 +50,7 @@ The table should look like following:
 
 ![database preview](/preview_database.jpg)
 
-**This repository is available in following platforms:**
+**This repository is available in following platforms:**  
 <https://git.sr.ht/~whoisyoges/simple-guestbook>  
 <https://codeberg.org/whoisyoges/simple-guestbook>  
 <https://github.com/whoisyoges/simple-guestbook>
