@@ -7,7 +7,9 @@ $title = "Castor's Guestbook";
 $per_page = 10;
 
 // Timezone to use (default to UTC)
-date_default_timezone_set('UTC');
+// For example UTC, Asia/Kathmandu, America/New_York
+$timezone = "UTC";
+date_default_timezone_set($timezone);
 
 // database server credientials
 $hostname = 'localhost';

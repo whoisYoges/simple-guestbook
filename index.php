@@ -68,7 +68,7 @@ include('variableAndFunctions.php');
 
         <div class="outputarea">
             <div class="user">
-                <p><?= ($result['name']) ?><span><?= ($result['date']) ?> UTC</span></p>
+                <p><?= ($result['name']) ?><span><?= ($result['date']) ?> <?=$timezone?></span></p>
             </div>
             <p><?= ($result['message']) ?></p>
         </div>
