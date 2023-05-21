@@ -24,12 +24,12 @@ $sumRandNum = $randNum1 + $randNum2;
 
 // Check if the session variable "sumRandNum" exists
 if (isset($_SESSION['sumRandNum'])) {
-    // If it does, assign the previous value of a to a new variable $previousA
+    // If it does, assign the previous value of sumRandNum to a new variable $previousSunRandNum
     $previousSumRandNum = $_SESSION['sumRandNum'];
 } else {
-    // If it doesn't exist, set $previousA to null
+    // If it doesn't exist, set $previousSunRandNum to null
     $previousSumRandNum = null;
 }
 
-// Update the value of a in the session variable
+// Update the value of sunRandNum in the session variable
 $_SESSION['sumRandNum'] = $sumRandNum;

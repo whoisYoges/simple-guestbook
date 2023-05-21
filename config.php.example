@@ -13,10 +13,10 @@ date_default_timezone_set($timezone);
 
 // database server credientials
 $hostname = 'localhost';
-$hostuser = 'root';
-$hostpass = '';
-$dbname = 'castor_guestbook'; //database name
-$tablename = 'guestbook'; //table name in the database
+$hostuser = 'databaseuser';
+$hostpass = 'databasepassword';
+$dbname = 'databasename';
+$tablename = 'tablename';
 
 //connection between php and mysql (Do not change this!!!)
 $dbconnect = new mysqli($hostname,$hostuser,$hostpass,$dbname);
