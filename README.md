@@ -24,17 +24,25 @@ Demo and preview at: <https://guestbook.yogeshlamichhane.com.np>.
 - mysql or mariadb (Or any other database; configure accordingly)
 
 # Configuration
-- All the configuration is done in [config.php](/config.php).
-- A database and a table in that database should be created according to the settings you configured in [config.php](/config.php).
+- All the configuration is done in config.php.
+Move [config.php.example](/config.php.example) to config.php and configure accordingly.
+
+```
+mv config.php.example config.php
+```
+
+- A database and a table in that database should be created according to the settings you configured in config.php.
 
 Practically,
-1. Create a database (give any name) and then configure it accordingly in [config.php](/config.php).
+1. Create a database (give any name) and then configure it accordingly in config.php.
 
 ```
 CREATE DATABASE <dbname>
 ```
 
-Replace `<dbname>` with your database name as configured in [config.php](/config.php).
+Replace `<dbname>` with your database name as configured in config.php.
+
+2. Create a table (give any name) and configure it accordingly in config.php.
 
 ```
 CREATE TABLE <dbname>.<tablename>
@@ -44,13 +52,13 @@ CREATE TABLE <dbname>.<tablename>
     `date` DATETIME DEFAULT NOW() NOT NULL) AUTO_INCREMENT=1;
 ```
 
-Replace `<dbname>` with your database name and `<tablename>` with your tablename as configured in [config.php](/config.php)
+Replace `<dbname>` with your database name and `<tablename>` with your tablename as configured in config.php.
 
 The table should look like following:
 
 ![database preview](/preview_database.jpg)
 
-**This repository is available in following platforms:**  
-<https://git.sr.ht/~whoisyoges/simple-guestbook>  
-<https://codeberg.org/whoisyoges/simple-guestbook>  
+**This repository is available in following platforms:**   
+<https://git.sr.ht/~whoisyoges/simple-guestbook>   
+<https://codeberg.org/whoisyoges/simple-guestbook>   
 <https://github.com/whoisyoges/simple-guestbook>
