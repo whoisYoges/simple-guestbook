@@ -22,6 +22,8 @@ if (isset($_POST['action']) and $_POST['action'] == 'sendmessage') {
         redirect('/index.php');
     } else {
         if ($previousSumRandNum == $verification) {
+            $name=mysqli_real_escape_string($dbconnect, htmlspecialchars($name));
+            $message=mysqli_real_escape_string($dbconnect, htmlspecialchars($message));
             $messageQuery = "INSERT INTO `$dbname`.`$tablename` (`id`, `name`, `message`, `date`) VALUES (NULL, '$name', '$message', '$timedate');";
             $sendMessage = mysqli_query($dbconnect, $messageQuery);
             if ($sendMessage) {
