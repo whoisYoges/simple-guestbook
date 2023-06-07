@@ -58,6 +58,14 @@ The table should look like following:
 
 ![database preview](/preview_database.jpg)
 
+3. Add a user and grant rights to the table
+```
+CREATE USER '<hostuser>'@'<hostname>' IDENTIFIED BY '<hostpass>';
+GRANT select,insert,update,delete ON '<dbname>'.'<tablename>' to `<hostuser>`@`<hostname>`;
+FLUSH PRIVILEGES;
+```
+
+
 **This repository is available in following platforms:**   
 <https://git.sr.ht/~whoisyoges/simple-guestbook>   
 <https://codeberg.org/whoisyoges/simple-guestbook>   
