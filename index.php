@@ -31,7 +31,7 @@ include('variableAndFunctions.php');
             <p><textarea name="message" rows="3" maxlength="600" class="inputfields" placeholder="Your Message"></textarea></p>
 
             <p class="inputid">Verification</p>
-            <p>What is <?= $randNum1 ?> + <?= $randNum2 ?> equals to: <input type="text" name="verification" id="verification" maxlength="3" placeholder="Your Answer"></p>
+            <p><?= $randNum1 ?> + <?= $randNum2 ?> is equal to: <input type="text" name="verification" id="verification" maxlength="3" placeholder="Your Answer"></p>
 
             <input type="submit" value="send" title="Send your message!">
             <input type="hidden" name="action" value="sendmessage">
