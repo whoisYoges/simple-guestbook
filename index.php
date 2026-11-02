@@ -15,7 +15,8 @@ $_SESSION['formShownAt'] = time();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://castorisdead.xyz/assets/images/avatar/avatar.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://castorisdead.xyz/assets/images/avatar/avatar.png">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- ?v= changes whenever the file does, so browsers and caches fetch the new version -->
+    <link rel="stylesheet" href="/assets/css/style.css?v=<?= @filemtime(__DIR__ . '/assets/css/style.css') ?>">
     <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?></title>
 </head>
 
@@ -31,8 +32,8 @@ $_SESSION['formShownAt'] = time();
             <p class="inputid">Message:</p>
             <p><textarea name="message" rows="3" maxlength="<?= $maxMessageLength ?>" class="inputfields" placeholder="Your Message"></textarea></p>
 
-            <!-- Honeypot: hidden from people, bots tend to fill it in -->
-            <p class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></p>
+            <!-- Honeypot: hidden from people, bots tend to fill it in. Inline style so a cached old stylesheet can't reveal it -->
+            <p class="hp" aria-hidden="true" style="position: absolute; left: -9999px"><input type="text" name="website" tabindex="-1" autocomplete="off"></p>
 
             <p class="inputid">Verification</p>
             <p><?= $randNum1 ?> + <?= $randNum2 ?> is equal to: <input type="text" name="verification" id="verification" maxlength="3" placeholder="Your Answer"></p>
