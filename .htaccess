@@ -1,0 +1,23 @@
+# Hide dotfiles and dot-directories (.env, .git, .setup_complete, ...),
+# but keep /.well-known/ reachable for Let's Encrypt and similar
+RedirectMatch 404 /\.(?!well-known/)
+
+# Config and include files are not pages
+<FilesMatch "^(config\.php|config\.php\.example|variableAndFunctions\.php|setup\.php)$">
+    Require all denied
+</FilesMatch>
+
+# Database dumps and CLI-only migration scripts
+<FilesMatch "\.sql$">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 ^/migrations/
+
+# Hide PHP errors from visitors even before the scripts run (mod_php only;
+# with PHP-FPM set display_errors = Off in php.ini instead)
+<IfModule mod_php.c>
+    php_flag display_errors off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag display_errors off
+</IfModule>
