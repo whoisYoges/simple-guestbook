@@ -1,7 +1,9 @@
 <?php
+// Copy this file to config.php and fill in your database details.
+// The table is created automatically on the first visit.
 
 // website name/title
-$title = "Castor's Guestbook";
+$title = "My Guestbook";
 
 // messages to display per page
 $per_page = 10;
@@ -9,17 +11,11 @@ $per_page = 10;
 // Timezone to use (default to UTC)
 // For example UTC, Asia/Kathmandu, America/New_York
 $timezone = "UTC";
-date_default_timezone_set($timezone);
 
-// database server credientials
+// database server credentials
 $hostname = 'localhost';
+$port = 3306;
 $hostuser = 'databaseuser';
 $hostpass = 'databasepassword';
 $dbname = 'databasename';
-$tablename = 'tablename';
-
-//connection between php and mysql (Do not change this!!!)
-$dbconnect = new mysqli($hostname,$hostuser,$hostpass,$dbname);
-
-// Create the required table in the database
-// CREATE TABLE `<dbname>`.`<tablename>` (`id` INT AUTO_INCREMENT PRIMARY KEY, `name` VARCHAR(60) NOT NULL, `message` TEXT(600) NOT NULL, `date` DATETIME DEFAULT NOW() NOT NULL) AUTO_INCREMENT=1;
+$tablename = 'guestbook';

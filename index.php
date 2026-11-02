@@ -3,6 +3,7 @@ if(!isset($_SESSION)){
     session_start();
 }
 include('config.php');
+include('setup.php');
 include('variableAndFunctions.php');
 ?>
 <!DOCTYPE html>
