@@ -23,10 +23,10 @@ include('setup.php');
         
         <form action="message.php" method="post">
             <p class="inputid">Name:</p>
-            <p><input type="text" name="name" class="inputfields" maxlength="60" placeholder="Your Name"></p>
+            <p><input type="text" name="name" class="inputfields" maxlength="<?= $maxNameLength ?>" placeholder="Your Name"></p>
 
             <p class="inputid">Message:</p>
-            <p><textarea name="message" rows="3" maxlength="600" class="inputfields" placeholder="Your Message"></textarea></p>
+            <p><textarea name="message" rows="3" maxlength="<?= $maxMessageLength ?>" class="inputfields" placeholder="Your Message"></textarea></p>
 
             <p class="inputid">Verification</p>
             <p><?= $randNum1 ?> + <?= $randNum2 ?> is equal to: <input type="text" name="verification" id="verification" maxlength="3" placeholder="Your Answer"></p>
