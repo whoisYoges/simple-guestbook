@@ -46,6 +46,12 @@ function charLength($text){
     return $count === false ? PHP_INT_MAX : $count;
 }
 
+// Print a stored value safely. Rows are stored HTML-encoded, so decode then re-encode:
+// form-posted rows render exactly as before, and raw HTML inserted any other way can't run.
+function showStored($text){
+    return htmlspecialchars(htmlspecialchars_decode((string)$text, ENT_QUOTES), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
 function redirect($url){
     header('location:'.$url);
     exit;
@@ -63,12 +69,12 @@ $sumRandNum = $randNum1 + $randNum2;
 
 // Check if the session variable "sumRandNum" exists
 if (isset($_SESSION['sumRandNum'])) {
-    // If it does, assign the previous value of sumRandNum to a new variable $previousSunRandNum
+    // If it does, assign the previous value of sumRandNum to a new variable $previousSumRandNum
     $previousSumRandNum = $_SESSION['sumRandNum'];
 } else {
-    // If it doesn't exist, set $previousSunRandNum to null
+    // If it doesn't exist, set $previousSumRandNum to null
     $previousSumRandNum = null;
 }
 
-// Update the value of sunRandNum in the session variable
+// Update the value of sumRandNum in the session variable
 $_SESSION['sumRandNum'] = $sumRandNum;

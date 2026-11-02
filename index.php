@@ -16,14 +16,14 @@ $_SESSION['formShownAt'] = time();
     <link rel="shortcut icon" href="https://castorisdead.xyz/assets/images/avatar/avatar.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://castorisdead.xyz/assets/images/avatar/avatar.png">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <title><?= $title ?></title>
+    <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?></title>
 </head>
 
 <body>
     <div class="guestbookarea">
-        <h1 id="welcome">Welcome to <?= $title ?>!</h1>
+        <h1 id="welcome">Welcome to <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>!</h1>
         <p id="madeby">Powered by <a href="https://github.com/whoisyoges/simple-guestbook" target="_blank">simple guestbook</a>.</p>
-        
+
         <form action="message.php" method="post">
             <p class="inputid">Name:</p>
             <p><input type="text" name="name" class="inputfields" maxlength="<?= $maxNameLength ?>" placeholder="Your Name"></p>
@@ -50,18 +50,18 @@ $_SESSION['formShownAt'] = time();
         </p>
         <?php
         // Get the current page number
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = isset($_GET['page']) && is_string($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 
         // Calculate the start point of the record set for the current page
         $start = ($page - 1) * $per_page;
 
         // Get the total number of messages
-        $showMessage = "SELECT * FROM `$dbname`.`$tablename` order by id desc";
+        $showMessage = "SELECT COUNT(*) FROM `$dbname`.`$tablename`";
         $execMessage = mysqli_query($dbconnect,$showMessage);
-        $total = mysqli_num_rows($execMessage);
-    
+        $total = (int)mysqli_fetch_row($execMessage)[0];
+
         // Calculate the total number of pages
-        $num_pages = ceil($total / $per_page);
+        $num_pages = (int)ceil($total / $per_page);
 
         // Select messages for current page
         $showPageMessage = "SELECT * FROM `$dbname`.`$tablename` ORDER BY id DESC LIMIT $start, $per_page";
@@ -72,23 +72,31 @@ $_SESSION['formShownAt'] = time();
 
         <div class="outputarea">
             <div class="user">
-                <p><?= ($result['name']) ?><span><?= ($result['date']) ?> <?=$timezone?></span></p>
+                <p><bdi><?= showStored($result['name']) ?></bdi><span><?= showStored($result['date']) ?> <?= showStored($timezone) ?></span></p>
             </div>
-            <p><?= ($result['message']) ?></p>
+            <p class="message"><?= showStored($result['message']) ?></p>
         </div>
         <?php
-            endwhile;                
+            endwhile;
         ?>
 
         <div class="pagination">
             <?php
-            // Generate pagination link
+            // Generate pagination links: first, last, and two pages either side of the current one
+            $lastShown = 0;
             for ($i = 1; $i <= $num_pages; $i++) {
+                if ($i != 1 && $i != $num_pages && abs($i - $page) > 2) {
+                    continue;
+                }
+                if ($i - $lastShown > 1) {
+                    echo '<span>…</span>';
+                }
                 if ($i == $page) {
                     echo '<a id="currentpage" href="?page=' . $i . '">' . $i . '</a>';
                 } else {
                     echo '<a href="?page=' . $i . '">' . $i . '</a>';
                 }
+                $lastShown = $i;
             }
             ?>
 
@@ -99,5 +107,5 @@ $_SESSION['formShownAt'] = time();
 </html>
 <?php
 // Close the connection
-mysqli_close($dbconnect); 
+mysqli_close($dbconnect);
 ?>

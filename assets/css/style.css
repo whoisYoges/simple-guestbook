@@ -58,7 +58,12 @@ form {
 .outputarea {
     border: 1px solid #dcdcdc;
     margin: 5px;
-    padding: 0 5px
+    padding: 0 5px;
+    overflow-wrap: anywhere
+}
+
+.message {
+    white-space: pre-line
 }
 
 .hp {
@@ -75,7 +80,8 @@ form {
     text-align: center;
 }
 
-.pagination a {
+.pagination a,
+.pagination span {
     display: inline-block;
     margin: 5px 15px;
 }
