@@ -1,1 +1,4 @@
 config.php
+.env
+.setup_complete
+*.sql
