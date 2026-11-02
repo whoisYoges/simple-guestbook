@@ -61,6 +61,11 @@ form {
     padding: 0 5px
 }
 
+.hp {
+    position: absolute;
+    left: -9999px
+}
+
 .user p span {
     float: right;
     font-weight: normal

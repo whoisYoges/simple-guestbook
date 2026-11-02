@@ -27,6 +27,12 @@ function postField($key){
 $maxNameLength = 60;
 $maxMessageLength = 600;
 
+// Anti-spam limits
+$minFormSeconds = 3;        // a human needs at least this long to fill in the form
+$sessionCooldown = 30;      // seconds between posts from the same visitor
+$floodWindowMinutes = 10;   // site-wide: at most $floodMaxMessages per window
+$floodMaxMessages = 10;
+
 // True if the text has at least one character that actually renders: ignores whitespace and
 // separators (\p{Z}), control/format/zero-width chars (\p{C}), lone combining marks (\p{M})
 // and blank-looking letters (Hangul fillers, halfwidth filler, braille blank)

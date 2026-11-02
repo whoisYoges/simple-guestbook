@@ -2,6 +2,9 @@
 include('variableAndFunctions.php');
 include('config.php');
 include('setup.php');
+
+// Remember when the form was shown, so instant (scripted) submits can be rejected
+$_SESSION['formShownAt'] = time();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +30,9 @@ include('setup.php');
 
             <p class="inputid">Message:</p>
             <p><textarea name="message" rows="3" maxlength="<?= $maxMessageLength ?>" class="inputfields" placeholder="Your Message"></textarea></p>
+
+            <!-- Honeypot: hidden from people, bots tend to fill it in -->
+            <p class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></p>
 
             <p class="inputid">Verification</p>
             <p><?= $randNum1 ?> + <?= $randNum2 ?> is equal to: <input type="text" name="verification" id="verification" maxlength="3" placeholder="Your Answer"></p>
