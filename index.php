@@ -1,10 +1,7 @@
 <?php
-if(!isset($_SESSION)){
-    session_start();
-}
+include('variableAndFunctions.php');
 include('config.php');
 include('setup.php');
-include('variableAndFunctions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

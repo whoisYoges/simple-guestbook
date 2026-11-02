@@ -1,7 +1,22 @@
 <?php
-if(!isset($_SESSION)){
+// Session cookie: not readable by JS, not sent cross-site, HTTPS-only when served over HTTPS
+if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params([
+        'httponly' => true,
+        'samesite' => 'Lax',
+        'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
+    ]);
     session_start();
 }
+
+// Never show internal errors (DB credentials, paths, queries) to visitors; log them instead
+ini_set('display_errors', '0');
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+set_exception_handler(function ($e) {
+    error_log((string)$e);
+    http_response_code(500);
+    exit('Something went wrong. Please try again later.');
+});
 
 function escape ($field){
     global $dbconnect;

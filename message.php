@@ -1,10 +1,7 @@
 <?php
-if(!isset($_SESSION)){
-    session_start();
-}
+include('variableAndFunctions.php');
 include('config.php');
 include('setup.php');
-include('variableAndFunctions.php');
 
 if (isset($_POST['action']) and $_POST['action'] == 'sendmessage') {
     $name = htmlspecialchars(escape($_POST['name']));
