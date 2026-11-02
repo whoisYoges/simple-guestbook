@@ -23,7 +23,7 @@ Demo and preview at: <https://guestbook.yogeshlamichhane.com.np>.
 - Full Unicode (emoji, CJK, accents) via utf8mb4
 
 # Dependencies
-- PHP 7.3 or newer with the `mysqli` extension
+- PHP 8.5 with the `mysqli` extension (older versions may work, but the latest version is recommended)
 - MySQL 5.7+ or MariaDB 10.3+
 
 # Configuration
